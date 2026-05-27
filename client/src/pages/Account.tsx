@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import api from '../lib/axios';
+import { useToast } from '../components/Toast';
 import useAuth from '../hooks/useAuth';
 
 const roleBadgeColors: Record<string, string> = {
@@ -10,6 +11,7 @@ const roleBadgeColors: Record<string, string> = {
 
 export default function Account() {
   const { user } = useAuth();
+  const toast = useToast();
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
@@ -25,6 +27,7 @@ export default function Account() {
     try {
       await api.post('/change-password', { currentPassword, newPassword });
       setSuccess('Password changed successfully.');
+      toast.success('Password changed');
       setCurrentPassword('');
       setNewPassword('');
     } catch (err: unknown) {

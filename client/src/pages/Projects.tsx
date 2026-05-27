@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import api from '../lib/axios';
+import { useToast } from '../components/Toast';
 
 interface Project {
   id: number;
@@ -13,6 +14,7 @@ interface Project {
 
 export default function Projects() {
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -37,6 +39,7 @@ export default function Projects() {
       setDescription('');
       setShowForm(false);
       setFormError('');
+      toast.success('Project created');
     },
     onError: (err: unknown) => {
       if (err && typeof err === 'object' && 'response' in err) {

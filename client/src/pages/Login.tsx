@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from 'react';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
 import api, { TOKEN_KEY } from '../lib/axios';
+import { useToast } from '../components/Toast';
 
 export default function Login() {
   const navigate = useNavigate();
+  const toast = useToast();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,6 +21,7 @@ export default function Login() {
     try {
       const { data } = await api.post('/login', { email, password });
       localStorage.setItem(TOKEN_KEY, data.token);
+      toast.success('Login successful');
       navigate('/dashboard');
     } catch (err: unknown) {
       if (err && typeof err === 'object' && 'response' in err) {

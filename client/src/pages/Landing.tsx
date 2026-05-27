@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: "url('/httplocalhost5173.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="min-h-screen relative flex flex-col items-center justify-center" style={{ backgroundImage: "url('/httplocalhost5173.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="text-center mb-12">
         <h2 className="text-xl font-semibold mb-6">Everything you need to launch</h2>
         <div className="flex flex-col gap-3 text-left max-w-md mx-auto">
@@ -26,6 +26,14 @@ export default function Landing() {
         <Link to="/login" className="inline-block text-center min-w-[120px] px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-all duration-200">Login</Link>
         <Link to="/register" className="inline-block text-center min-w-[120px] px-4 py-2 border border-blue-600 text-blue-600 rounded-lg text-sm font-medium hover:bg-blue-50 transition-all duration-200">Register</Link>
       </div>
+      <footer className="absolute bottom-0 w-full py-4 text-center text-sm text-gray-500">
+        <div className="flex items-center justify-center gap-4 mb-1">
+          <a href="https://github.com/Milad-Gerami/LaunchForge-AI" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 transition-colors">GitHub</a>
+          <span className="text-gray-300">|</span>
+          <span>Built with React + Node</span>
+        </div>
+        <p>&copy; {new Date().getFullYear()} LaunchForge AI</p>
+      </footer>
     </div>
   );
 }

@@ -4,10 +4,15 @@
 BEGIN;
 
 -- STEP 1: CLEAN (FK-safe order)
+DELETE FROM campaigns;
+DELETE FROM feedback;
+DELETE FROM workspace_members;
+DELETE FROM notifications;
 DELETE FROM role_audit_log;
 DELETE FROM project_activity;
 DELETE FROM tasks;
 DELETE FROM projects;
+DELETE FROM workspaces;
 DELETE FROM users;
 
 -- Reset sequences
@@ -16,6 +21,9 @@ ALTER SEQUENCE projects_id_seq RESTART WITH 1;
 ALTER SEQUENCE tasks_id_seq RESTART WITH 1;
 ALTER SEQUENCE project_activity_id_seq RESTART WITH 1;
 ALTER SEQUENCE role_audit_log_id_seq RESTART WITH 1;
+ALTER SEQUENCE workspaces_id_seq RESTART WITH 1;
+ALTER SEQUENCE campaigns_id_seq RESTART WITH 1;
+ALTER SEQUENCE notifications_id_seq RESTART WITH 1;
 
 -- STEP 2: RESEED USERS
 INSERT INTO users (email, password, role) VALUES
@@ -25,6 +33,10 @@ INSERT INTO users (email, password, role) VALUES
   ('priya.patel@launchforge.io',    '$2b$10$1fA5R20dJYdZWsF1DFfn0eTas7amW4H6xXvgzAjYUL59pumKlLIjS', 'user'),
   ('daniel.nguyen@launchforge.io',  '$2b$10$1fA5R20dJYdZWsF1DFfn0eTas7amW4H6xXvgzAjYUL59pumKlLIjS', 'user');
 -- IDs: milad=1, sarah=2, james=3, priya=4, daniel=5
+
+-- STEP 2.5: RESEED WORKSPACES
+INSERT INTO workspaces (owner_id, startup_name, industry, status)
+VALUES (1, 'LaunchForge HQ', 'SaaS / Developer Tools', 'active');
 
 -- STEP 3: RESEED PROJECTS
 INSERT INTO projects (user_id, name, description, status, created_at, updated_at) VALUES

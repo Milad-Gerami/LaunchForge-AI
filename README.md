@@ -294,7 +294,7 @@ LaunchForge-AI/
 
 | Item | Reason |
 |---|---|
-| Billing / subscription tiers | Enterprise scope — Stripe integration is a product phase beyond internship timeline |
+| Billing / subscription tiers | Enterprise scope — Stripe integration is a product phase beyond the current project scope |
 | Adaptive AI learning | Enterprise scope — requires usage data accumulation over time |
 | Email notifications | In-app notifications satisfy the spec; email is a straightforward extension of the existing notification service |
 | Full static code analysis | GitHub integration fetches public metadata and generates AI analysis — full AST-level analysis is a separate product |

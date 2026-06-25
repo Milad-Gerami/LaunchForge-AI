@@ -303,5 +303,5 @@ LaunchForge-AI/
 
 ## Built By
 
-**Milad Gerami** — Internship portfolio project, 2026  
+**Milad Gerami** — Portfolio project, 2026  
 GitHub: [Milad-Gerami](https://github.com/Milad-Gerami)
